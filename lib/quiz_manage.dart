@@ -19,6 +19,18 @@ class QuizManage {
     }
   }
 
+  bool isFinished() {
+    if (_quizProgress >= _quizBank.length - 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void reset() {
+    _quizProgress = 0;
+  }
+
   String getQuestion() {
     return _quizBank[_quizProgress].question;
   }

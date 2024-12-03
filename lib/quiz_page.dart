@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizlord/quiz_manage.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
@@ -14,6 +15,7 @@ class _QuizPageState extends State<QuizPage> {
 
   void checkAnswer(bool userPickedAnswer) {
     bool correctAnswer = quizBank.getCorrectAnswer();
+    bool isFinished = quizBank.isFinished();
 
     setState(() {
       if (userPickedAnswer == correctAnswer) {
@@ -30,6 +32,31 @@ class _QuizPageState extends State<QuizPage> {
             color: Colors.red,
           ),
         );
+      }
+
+      quizBank.nextQuestion();
+
+      if (isFinished) {
+        Alert(
+          context: context,
+          title: 'Finished!',
+          desc: 'You\'ve reached the end of the quiz.',
+          buttons: [
+            DialogButton(
+              child: const Text(
+                'Restart',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () {
+                quizBank.reset();
+                scoreKeeper = [];
+                setState(() {
+                  Navigator.pop(context);
+                });
+              },
+            ),
+          ],
+        ).show();
       }
     });
   }
