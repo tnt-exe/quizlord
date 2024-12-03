@@ -15,21 +15,23 @@ class _QuizPageState extends State<QuizPage> {
   void checkAnswer(bool userPickedAnswer) {
     bool correctAnswer = quizBank.getCorrectAnswer();
 
-    if (userPickedAnswer == correctAnswer) {
-      scoreKeeper.add(
-        const Icon(
-          Icons.check,
-          color: Colors.green,
-        ),
-      );
-    } else {
-      scoreKeeper.add(
-        const Icon(
-          Icons.close,
-          color: Colors.red,
-        ),
-      );
-    }
+    setState(() {
+      if (userPickedAnswer == correctAnswer) {
+        scoreKeeper.add(
+          const Icon(
+            Icons.check,
+            color: Colors.green,
+          ),
+        );
+      } else {
+        scoreKeeper.add(
+          const Icon(
+            Icons.close,
+            color: Colors.red,
+          ),
+        );
+      }
+    });
   }
 
   @override
@@ -60,9 +62,6 @@ class _QuizPageState extends State<QuizPage> {
             child: TextButton(
               onPressed: () {
                 checkAnswer(true);
-                setState(() {
-                  quizBank.nextQuestion();
-                });
               },
               style: TextButton.styleFrom(
                 backgroundColor: Colors.green,
@@ -86,9 +85,6 @@ class _QuizPageState extends State<QuizPage> {
             child: TextButton(
               onPressed: () {
                 checkAnswer(false);
-                setState(() {
-                  quizBank.nextQuestion();
-                });
               },
               style: TextButton.styleFrom(
                 backgroundColor: Colors.red,
