@@ -1,8 +1,8 @@
-class Question {
+class Quiz {
   final String question;
   final bool answer;
 
-  Question({
+  Quiz({
     required this.question,
     required this.answer,
   });

@@ -3,14 +3,14 @@ import 'package:quizlord/quiz.dart';
 class QuizManage {
   int _quizProgress = 0;
 
-  final List<Question> _quizBank = [
-    Question(
+  final List<Quiz> _quizBank = [
+    Quiz(
         question: "You can lead a cow down stairs but not up stairs.",
         answer: false),
-    Question(
+    Quiz(
         question: "Approximately one quarter of human bones are in the feet.",
         answer: true),
-    Question(question: "A slug's blood is green.", answer: true),
+    Quiz(question: "A slug's blood is green.", answer: true),
   ];
 
   void nextQuestion() {
@@ -19,7 +19,7 @@ class QuizManage {
     }
   }
 
-  String getQuestionText() {
+  String getQuestion() {
     return _quizBank[_quizProgress].question;
   }
 
