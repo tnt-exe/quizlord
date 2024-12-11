@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizlord/quiz_page.dart';
+import 'package:quizlord/responsive_container.dart';
 
 void main() => runApp(const Quizlord());
 
@@ -19,7 +20,9 @@ class Quizlord extends StatelessWidget {
         body: const SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
-            child: QuizPage(),
+            child: ResponsiveContainer(
+              child: QuizPage(),
+            ),
           ),
         ),
       ),
